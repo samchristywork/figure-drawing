@@ -1,0 +1,23 @@
+canvas {
+  border: 1px solid black;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 98%;
+}
+
+.overview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 29vw;
+  height: 29vw;
+}
+
+body {
+  background-color: #444;
+}
