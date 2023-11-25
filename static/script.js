@@ -10,6 +10,8 @@ var overviewX = 50;
 var overviewY = 50;
 var overviewScale = 2;
 
+var lmbDown = false;
+
 var layers = [
   {
     points: [
@@ -98,5 +100,25 @@ overview.addEventListener("mousedown", function(e) {
   overviewX = e.offsetX;
   overviewY = e.offsetY;
 
+  lmbDown = true;
+
   redraw = true;
+});
+
+overview.addEventListener("mouseup", function(e) {
+  overviewX = e.offsetX;
+  overviewY = e.offsetY;
+
+  lmbDown = false;
+
+  redraw = true;
+});
+
+overview.addEventListener("mousemove", function(e) {
+  if (lmbDown) {
+    overviewX = e.offsetX;
+    overviewY = e.offsetY;
+
+    redraw = true;
+  }
 });
