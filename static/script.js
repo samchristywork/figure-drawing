@@ -39,6 +39,27 @@ function drawLayers() {
 }
 
 function render() {
+  if (redraw) {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#000000";
+    ctx.strokeStyle = "#000000";
+
+    for (let x = 0; x < canvas.width; x += 10) {
+      for (let y = 0; y < canvas.height; y += 10) {
+        ctx.beginPath();
+        ctx.rect(x, y, 10, 10);
+        ctx.stroke();
+      }
+    }
+
+    drawLayers();
+  }
+
+  redraw = false;
 }
 
 setInterval(render, 1000 / 60);
