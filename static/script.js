@@ -20,6 +20,24 @@ var layers = [
   },
 ];
 
+function drawLayers() {
+  ctx.fillStyle = "#ff0000";
+  ctx.strokeStyle = "#ff0000";
+
+  for (var i = 0; i < layers.length; i++) {
+    var layer = layers[i];
+
+    ctx.beginPath();
+    ctx.moveTo(layer.points[0].x, layer.points[0].y);
+
+    for (var j = 1; j < layer.points.length; j++) {
+      ctx.lineTo(layer.points[j].x, layer.points[j].y);
+    }
+
+    ctx.stroke();
+  }
+}
+
 function render() {
 }
 
