@@ -32,6 +32,15 @@ function drawLayers() {
   for (var i = 0; i < layers.length; i++) {
     var layer = layers[i];
 
+    for (var j = 0; j < layer.images.length; j++) {
+      var image = layer.images[j];
+
+      var img = new Image();
+      img.src = image.src;
+
+      ctx.drawImage(img, image.x, image.y);
+    }
+
     ctx.beginPath();
     ctx.moveTo(layer.points[0].x, layer.points[0].y);
 
