@@ -50,6 +50,7 @@ function drawLayers() {
       image.height = img.height * image.scale;
 
       ctx.drawImage(img, image.x, image.y, image.width, image.height);
+      ctxOverview.drawImage(img, image.x, image.y, image.width, image.height);
     }
 
     ctx.beginPath();
