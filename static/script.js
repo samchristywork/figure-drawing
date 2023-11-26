@@ -143,3 +143,8 @@ overview.addEventListener("mousemove", function(e) {
     redraw = true;
   }
 });
+
+window.addEventListener("resize", function() {
+  redraw = true;
+  render();
+});
