@@ -24,6 +24,7 @@ var layers = [
         src: "img.jpg",
         x: -30,
         y: 0,
+        scale: 0.04,
       },
     ],
   },
@@ -45,7 +46,10 @@ function drawLayers() {
       var img = new Image();
       img.src = image.src;
 
-      ctx.drawImage(img, image.x, image.y);
+      image.width = img.width * image.scale;
+      image.height = img.height * image.scale;
+
+      ctx.drawImage(img, image.x, image.y, image.width, image.height);
     }
 
     ctx.beginPath();
