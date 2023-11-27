@@ -31,6 +31,10 @@ var layers = [
 ];
 
 function drawLayers() {
+  ctx.save();
+  ctx.scale(1.0 / viewportScale, 1.0 / viewportScale);
+  ctx.translate(-viewportX, -viewportY);
+
   ctx.fillStyle = "#ff0000";
   ctx.strokeStyle = "#ff0000";
 
@@ -71,6 +75,8 @@ function drawLayers() {
 
     ctxOverview.stroke();
   }
+
+  ctx.restore();
 }
 
 function render() {
