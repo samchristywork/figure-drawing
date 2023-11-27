@@ -124,8 +124,11 @@ document.addEventListener("keydown", function(e) {
 });
 
 overview.addEventListener("mousedown", function(e) {
-  overviewX = e.offsetX;
-  overviewY = e.offsetY;
+  let vpWidth = canvas.width * viewportScale;
+  let vpHeight = canvas.height * viewportScale;
+
+  viewportX = e.offsetX - vpWidth / 2;
+  viewportY = e.offsetY - vpHeight / 2;
 
   lmbDown = true;
 
@@ -133,8 +136,11 @@ overview.addEventListener("mousedown", function(e) {
 });
 
 overview.addEventListener("mouseup", function(e) {
-  overviewX = e.offsetX;
-  overviewY = e.offsetY;
+  let vpWidth = canvas.width * viewportScale;
+  let vpHeight = canvas.height * viewportScale;
+
+  viewportX = e.offsetX - vpWidth / 2;
+  viewportY = e.offsetY - vpHeight / 2;
 
   lmbDown = false;
 
@@ -143,8 +149,11 @@ overview.addEventListener("mouseup", function(e) {
 
 overview.addEventListener("mousemove", function(e) {
   if (lmbDown) {
-    overviewX = e.offsetX;
-    overviewY = e.offsetY;
+    let vpWidth = canvas.width * viewportScale;
+    let vpHeight = canvas.height * viewportScale;
+
+    viewportX = e.offsetX - vpWidth / 2;
+    viewportY = e.offsetY - vpHeight / 2;
 
     redraw = true;
   }
