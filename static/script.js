@@ -31,10 +31,6 @@ var layers = [
 ];
 
 function drawLayers() {
-  ctx.save();
-  ctx.scale(1.0 / viewportScale, 1.0 / viewportScale);
-  ctx.translate(-viewportX, -viewportY);
-
   ctx.fillStyle = "#ff0000";
   ctx.strokeStyle = "#ff0000";
 
@@ -75,8 +71,6 @@ function drawLayers() {
 
     ctxOverview.stroke();
   }
-
-  ctx.restore();
 }
 
 function render() {
@@ -96,6 +90,10 @@ function render() {
     ctxOverview.fillStyle = "#000000";
     ctxOverview.strokeStyle = "#000000";
 
+    ctx.save();
+    ctx.scale(1.0 / viewportScale, 1.0 / viewportScale);
+    ctx.translate(-viewportX, -viewportY);
+
     for (let x = 0; x < canvas.width; x += 10) {
       for (let y = 0; y < canvas.height; y += 10) {
         ctx.beginPath();
@@ -109,6 +107,8 @@ function render() {
     }
 
     drawLayers();
+
+    ctx.restore();
 
     ctxOverview.beginPath();
     ctxOverview.rect(viewportX, viewportY, canvas.width * viewportScale, canvas.height * viewportScale);
