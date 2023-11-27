@@ -6,9 +6,9 @@ var ctxOverview = overview.getContext("2d");
 
 var redraw = true;
 
-var overviewX = 50;
-var overviewY = 50;
-var overviewScale = 2;
+var viewportX = 0;
+var viewportY = 0;
+var viewportScale = 0.1;
 
 var lmbDown = false;
 
@@ -22,7 +22,7 @@ var layers = [
     images: [
       {
         src: "img.jpg",
-        x: -30,
+        x: 0,
         y: 0,
         scale: 0.04,
       },
