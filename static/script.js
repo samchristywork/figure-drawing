@@ -111,7 +111,7 @@ function render() {
     drawLayers();
 
     ctxOverview.beginPath();
-    ctxOverview.rect(overviewX, overviewY, 10, 10);
+    ctxOverview.rect(viewportX, viewportY, canvas.width * viewportScale, canvas.height * viewportScale);
     ctxOverview.stroke();
   }
 
