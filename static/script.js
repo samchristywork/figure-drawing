@@ -25,6 +25,7 @@ var layers = [
         x: 0,
         y: 0,
         scale: 0.04,
+        img: new Image(),
       },
     ],
   },
@@ -43,8 +44,7 @@ function drawLayers() {
     for (var j = 0; j < layer.images.length; j++) {
       var image = layer.images[j];
 
-      var img = new Image();
-      img.src = image.src;
+      var img = layer.images[j].img;
 
       image.width = img.width * image.scale;
       image.height = img.height * image.scale;
@@ -118,8 +118,6 @@ function render() {
   redraw = false;
 }
 
-setInterval(render, 1000 / 60);
-
 document.addEventListener("keydown", function(e) {
 });
 
@@ -163,3 +161,5 @@ window.addEventListener("resize", function() {
   redraw = true;
   render();
 });
+
+setInterval(render, 1000 / 60);
