@@ -31,6 +31,21 @@ var layers = [
   },
 ];
 
+for (let i = 0; i < layers.length; i++) {
+  let layer = layers[i];
+
+  for (let j = 0; j < layer.images.length; j++) {
+    let image = layer.images[j];
+
+    image.img.src = image.src;
+
+    image.img.onload = function() {
+      redraw = true;
+      render();
+    };
+  }
+}
+
 function drawLayers() {
   ctx.fillStyle = "#ff0000";
   ctx.strokeStyle = "#ff0000";
