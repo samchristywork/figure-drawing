@@ -162,4 +162,20 @@ window.addEventListener("resize", function() {
   render();
 });
 
+window.addEventListener("wheel", function(e) {
+  let vpWidth = canvas.width * viewportScale;
+  let vpHeight = canvas.height * viewportScale;
+
+  let oldScale = viewportScale;
+
+  viewportScale += e.deltaY * 0.001;
+
+  let newScale = viewportScale;
+
+  let scaleDiff = newScale - oldScale;
+
+  viewportX -= vpWidth * scaleDiff / 2;
+  viewportY -= vpHeight * scaleDiff / 2;
+});
+
 setInterval(render, 1000 / 60);
