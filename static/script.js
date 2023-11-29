@@ -185,6 +185,14 @@ window.addEventListener("wheel", function(e) {
 
   viewportScale += e.deltaY * 0.001;
 
+  if (viewportScale < 0.01) {
+    viewportScale = 0.01;
+  }
+
+  if (viewportScale > 1.0) {
+    viewportScale = 1.0;
+  }
+
   let newScale = viewportScale;
 
   let scaleDiff = newScale - oldScale;
