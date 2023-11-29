@@ -210,6 +210,9 @@ window.addEventListener("wheel", function(e) {
 
   viewportX -= vpWidth * scaleDiff / 2;
   viewportY -= vpHeight * scaleDiff / 2;
+
+  redraw = true;
+  render();
 });
 
 setInterval(render, 1000 / 60);
