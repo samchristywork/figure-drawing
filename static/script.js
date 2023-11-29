@@ -109,15 +109,26 @@ function render() {
     ctx.scale(1.0 / viewportScale, 1.0 / viewportScale);
     ctx.translate(-viewportX, -viewportY);
 
-    for (let x = 0; x < canvas.width; x += 10) {
-      for (let y = 0; y < canvas.height; y += 10) {
+    var gridWidth = 5;
+    for (let x = 0; x < canvas.width; x += gridWidth) {
+      for (let y = 0; y < canvas.height; y += gridWidth) {
+
+        var color = "#ffffff";
+
+        if (x % (2 * gridWidth) == 0 && y % (2 * gridWidth) == 0 || x % (2 * gridWidth) != 0 && y % (2 * gridWidth) != 0) {
+          color = "#cccccc";
+        }
+
+        ctx.fillStyle = color;
+        ctxOverview.fillStyle = color;
+
         ctx.beginPath();
-        ctx.rect(x, y, 10, 10);
-        ctx.stroke();
+        ctx.rect(x, y, gridWidth, gridWidth);
+        ctx.fill();
 
         ctxOverview.beginPath();
-        ctxOverview.rect(x, y, 10, 10);
-        ctxOverview.stroke();
+        ctxOverview.rect(x, y, gridWidth, gridWidth);
+        ctxOverview.fill();
       }
     }
 
