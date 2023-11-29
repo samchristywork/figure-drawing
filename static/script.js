@@ -99,6 +99,11 @@ function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOverview.clearRect(0, 0, overview.width, overview.height);
 
+    ctx.fillStyle = "#222222";
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fill();
+
     ctx.fillStyle = "#000000";
     ctx.strokeStyle = "#000000";
 
