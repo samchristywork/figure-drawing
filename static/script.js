@@ -9,16 +9,12 @@ var redraw = true;
 var viewportX = 0;
 var viewportY = 0;
 var viewportScale = 0.1;
-
-var lmbDown = false;
+var lmbOverview = false;
+var lmbCanvas = false;
+var activeLayer = 1;
 
 var layers = [
   {
-    points: [
-      { x: 10, y: 10 },
-      { x: 10, y: 20 },
-      { x: 20, y: 30 },
-    ],
     images: [
       {
         src: "img.jpg",
@@ -29,20 +25,26 @@ var layers = [
       },
     ],
   },
+  {
+    points: [
+    ],
+  },
 ];
 
 for (let i = 0; i < layers.length; i++) {
   let layer = layers[i];
 
-  for (let j = 0; j < layer.images.length; j++) {
-    let image = layer.images[j];
+  if (layer.images) {
+    for (let j = 0; j < layer.images.length; j++) {
+      let image = layer.images[j];
 
-    image.img.src = image.src;
+      image.img.src = image.src;
 
-    image.img.onload = function() {
-      redraw = true;
-      render();
-    };
+      image.img.onload = function() {
+        redraw = true;
+        render();
+      };
+    }
   }
 }
 
