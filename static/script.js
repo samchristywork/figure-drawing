@@ -58,16 +58,18 @@ function drawLayers() {
   for (var i = 0; i < layers.length; i++) {
     var layer = layers[i];
 
-    for (var j = 0; j < layer.images.length; j++) {
-      var image = layer.images[j];
+    if (layer.images) {
+      for (var j = 0; j < layer.images.length; j++) {
+        var image = layer.images[j];
 
-      var img = layer.images[j].img;
+        var img = layer.images[j].img;
 
-      image.width = img.width * image.scale;
-      image.height = img.height * image.scale;
+        image.width = img.width * image.scale;
+        image.height = img.height * image.scale;
 
-      ctx.drawImage(img, image.x, image.y, image.width, image.height);
-      ctxOverview.drawImage(img, image.x, image.y, image.width, image.height);
+        ctx.drawImage(img, image.x, image.y, image.width, image.height);
+        ctxOverview.drawImage(img, image.x, image.y, image.width, image.height);
+      }
     }
 
     ctx.beginPath();
