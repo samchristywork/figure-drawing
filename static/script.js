@@ -72,23 +72,27 @@ function drawLayers() {
       }
     }
 
-    ctx.beginPath();
-    ctx.moveTo(layer.points[0].x, layer.points[0].y);
+    if (layer.points) {
+      if (layer.points.length > 0) {
+        ctx.beginPath();
+        ctx.moveTo(layer.points[0].x, layer.points[0].y);
 
-    for (var j = 1; j < layer.points.length; j++) {
-      ctx.lineTo(layer.points[j].x, layer.points[j].y);
+        for (var j = 1; j < layer.points.length; j++) {
+          ctx.lineTo(layer.points[j].x, layer.points[j].y);
+        }
+
+        ctx.stroke();
+
+        ctxOverview.beginPath();
+        ctxOverview.moveTo(layer.points[0].x, layer.points[0].y);
+
+        for (var j = 1; j < layer.points.length; j++) {
+          ctxOverview.lineTo(layer.points[j].x, layer.points[j].y);
+        }
+
+        ctxOverview.stroke();
+      }
     }
-
-    ctx.stroke();
-
-    ctxOverview.beginPath();
-    ctxOverview.moveTo(layer.points[0].x, layer.points[0].y);
-
-    for (var j = 1; j < layer.points.length; j++) {
-      ctxOverview.lineTo(layer.points[j].x, layer.points[j].y);
-    }
-
-    ctxOverview.stroke();
   }
 }
 
