@@ -159,13 +159,13 @@ function render() {
 
 document.addEventListener("keydown", function(e) {
   if (e.key == "w") {
-    viewportY -= 10;
+    viewportY -= 10 * viewportScale * 10;
   } else if (e.key == "a") {
-    viewportX -= 10;
+    viewportX -= 10 * viewportScale * 10;
   } else if (e.key == "s") {
-    viewportY += 10;
+    viewportY += 10 * viewportScale * 10;
   } else if (e.key == "d") {
-    viewportX += 10;
+    viewportX += 10 * viewportScale * 10;
   } else if (e.key == "q") {
     viewportScale *= 1.1;
   } else if (e.key == "e") {
