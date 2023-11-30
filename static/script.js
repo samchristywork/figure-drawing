@@ -176,6 +176,34 @@ document.addEventListener("keydown", function(e) {
   render();
 });
 
+canvas.addEventListener("mousedown", function(e) {
+  let x = e.offsetX * viewportScale + viewportX;
+  let y = e.offsetY * viewportScale + viewportY;
+
+  layers[activeLayer].points.push({
+    x: x,
+    y: y,
+  });
+
+  lmbCanvas = true;
+
+  redraw = true;
+});
+
+canvas.addEventListener("mouseup", function(e) {
+  let x = e.offsetX * viewportScale + viewportX;
+  let y = e.offsetY * viewportScale + viewportY;
+
+  layers[activeLayer].points.push({
+    x: x,
+    y: y,
+  });
+
+  lmbCanvas = false;
+
+  redraw = true;
+});
+
 overview.addEventListener("mousedown", function(e) {
   let vpWidth = canvas.width * viewportScale;
   let vpHeight = canvas.height * viewportScale;
