@@ -204,6 +204,20 @@ canvas.addEventListener("mouseup", function(e) {
   redraw = true;
 });
 
+canvas.addEventListener("mousemove", function(e) {
+  if (lmbCanvas) {
+    let x = e.offsetX * viewportScale + viewportX;
+    let y = e.offsetY * viewportScale + viewportY;
+
+    layers[activeLayer].points.push({
+      x: x,
+      y: y,
+    });
+  }
+
+  redraw = true;
+});
+
 overview.addEventListener("mousedown", function(e) {
   let vpWidth = canvas.width * viewportScale;
   let vpHeight = canvas.height * viewportScale;
@@ -211,7 +225,7 @@ overview.addEventListener("mousedown", function(e) {
   viewportX = e.offsetX - vpWidth / 2;
   viewportY = e.offsetY - vpHeight / 2;
 
-  lmbDown = true;
+  lmbOverview = true;
 
   redraw = true;
 });
@@ -223,13 +237,13 @@ overview.addEventListener("mouseup", function(e) {
   viewportX = e.offsetX - vpWidth / 2;
   viewportY = e.offsetY - vpHeight / 2;
 
-  lmbDown = false;
+  lmbOverview = false;
 
   redraw = true;
 });
 
 overview.addEventListener("mousemove", function(e) {
-  if (lmbDown) {
+  if (lmbOverview) {
     let vpWidth = canvas.width * viewportScale;
     let vpHeight = canvas.height * viewportScale;
 
