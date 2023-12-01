@@ -104,6 +104,17 @@ function render() {
     let x = mousePosCanvas.x;
     let y = mousePosCanvas.y;
 
+    let points = layers[activeLayer].points;
+    let lastX = points[points.length - 1].x;
+    let lastY = points[points.length - 1].y;
+
+    let dx = lastX - x;
+    let dy = lastY - y;
+
+    let distance = Math.sqrt(dx * dx + dy * dy);
+    x += dx / distance;
+    y += dy / distance;
+
     layers[activeLayer].points.push({ x: x, y: y });
   }
 
