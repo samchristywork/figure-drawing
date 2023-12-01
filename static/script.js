@@ -11,6 +11,7 @@ var viewportY = 0;
 var viewportScale = 0.1;
 var lmbOverview = false;
 var lmbCanvas = false;
+var mousePosCanvas = { x: 0, y: 0 };
 var activeLayer = 1;
 
 var layers = [
@@ -97,6 +98,15 @@ function drawLayers() {
 }
 
 function render() {
+  if (lmbCanvas) {
+    redraw = true;
+
+    let x = mousePosCanvas.x;
+    let y = mousePosCanvas.y;
+
+    layers[activeLayer].points.push({ x: x, y: y });
+  }
+
   if (redraw) {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -180,10 +190,8 @@ canvas.addEventListener("mousedown", function(e) {
   let x = e.offsetX * viewportScale + viewportX;
   let y = e.offsetY * viewportScale + viewportY;
 
-  layers[activeLayer].points.push({
-    x: x,
-    y: y,
-  });
+  mousePosCanvas.x = x;
+  mousePosCanvas.y = y;
 
   lmbCanvas = true;
 
@@ -193,11 +201,6 @@ canvas.addEventListener("mousedown", function(e) {
 canvas.addEventListener("mouseup", function(e) {
   let x = e.offsetX * viewportScale + viewportX;
   let y = e.offsetY * viewportScale + viewportY;
-
-  layers[activeLayer].points.push({
-    x: x,
-    y: y,
-  });
 
   lmbCanvas = false;
 
@@ -209,10 +212,8 @@ canvas.addEventListener("mousemove", function(e) {
     let x = e.offsetX * viewportScale + viewportX;
     let y = e.offsetY * viewportScale + viewportY;
 
-    layers[activeLayer].points.push({
-      x: x,
-      y: y,
-    });
+    mousePosCanvas.x = x;
+    mousePosCanvas.y = y;
   }
 
   redraw = true;
